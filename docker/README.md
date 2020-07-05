@@ -31,6 +31,27 @@
 - MySQL will be accessible via `127.0.0.1`, port `3305`.
 - MySQL data files can be found in `$HOME/docker-data/mysql-imathas`.
 
+# Getting Vue dev server running
+
+NOTE: This doesn't seem to be working right yet. 
+
+- Open the CLI for your Docker app
+- Install npm by running `apt-get install npm`
+- Disable ssl checking by running `npm config set strict-ssl false`
+- Upgrade npm: `npm install npm@latest -g`
+- Close and restart the CLI
+- Change into the vue-src directory: `cd assess2/vue-src`
+- Install dependencies: `npm install`
+- Edit your config.php and add these lines:
+  - `$CFG['assess2-use-vue-dev'] = true;`
+  - `$CFG['assess2-use-vue-dev-address'] = 'http://localhost:8080';`
+
+Then you can start the dev server: `npm run serve`.  
+
+You will need to run `npm run serve` every time you want to use
+the development server.
+
+
 # Docker installation
 
 Direct download links, because loginwall:
