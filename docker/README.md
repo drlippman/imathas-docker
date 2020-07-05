@@ -33,8 +33,6 @@
 
 # Getting Vue dev server running
 
-NOTE: This doesn't seem to be working right yet. 
-
 - Open the CLI for your Docker app
 - Install npm by running `apt-get install npm`
 - Disable ssl checking by running `npm config set strict-ssl false`
@@ -45,11 +43,14 @@ NOTE: This doesn't seem to be working right yet.
 - Edit your config.php and add these lines:
   - `$CFG['assess2-use-vue-dev'] = true;`
   - `$CFG['assess2-use-vue-dev-address'] = 'http://localhost:8080';`
+- Create the file `assess2/vue-src/.env.local` with the following contents:
+  - `VUE_APP_IMASROOT=http://localhost`
+  - `VUE_APP_PROXY=http://localhost`
+  
+Then you can start the development server: `npm run serve`.  
 
-Then you can start the dev server: `npm run serve`.  
-
-You will need to run `npm run serve` every time you want to use
-the development server.
+If you restart you computer or close Docker, you will need to run `npm run serve` 
+again to restart the development server.
 
 
 # Docker installation
