@@ -12,10 +12,12 @@ services:
     expose:
       - 80
       - 443
+      - 8080
       - 9000
     ports:
       - "443:443"
       - "80:80"
+      - "8080:8080"
     links:
       - db
     volumes:
