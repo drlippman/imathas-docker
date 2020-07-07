@@ -19,4 +19,5 @@ FROM php:7.3-apache
       && docker-php-ext-install zip
     RUN cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/
 	RUN a2enmod ssl
+	RUN apt-get purge -y javascript-common
 
