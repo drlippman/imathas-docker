@@ -21,7 +21,11 @@ services:
     links:
       - db
     volumes:
-      - "/c/Users/David/Documents/IMathAS:/var/www/html"
+      # Change this so the part before the colon is the folder your code is in. /c/ means c drive
+      # If want to develop other websites, you can map to a web subdirectory rather than the web root
+      # by adding /imathas on the mapped path after the colon.  Then you can map other code folders to
+      # other web paths
+      - "/c/IMathAS:/var/www/html"
       - "./docker/ssl:/etc/ssl/certs"
       - "./docker/ssl:/etc/ssl/private"
 
@@ -39,14 +43,19 @@ services:
       DB_USERNAME: "imathas"
       DB_PASSWORD: "imathas"
       CONFIG_ENV: "development"
+      CHOKIDAR_USEPOLLING: "true"
+      WATCHPACK_POLLING: "true"
 
   db:
-    image: mysql:5.7
+    image: mysql:8.0
+    container_name: lamp_db
     expose:
       - 3306
     ports:
       - "127.0.0.1:3305:3306"
     volumes:
+      # you can change the path (before the colon) to be a specific folder on your
+      # drive if you'd prefer
       - "$HOME/docker-data/mysql-imathas:/var/lib/mysql"
 
     hostname: db
@@ -62,4 +71,15 @@ services:
       MYSQL_USER: "imathas"
       MYSQL_PASSWORD: "imathas"
       MYSQL_DATABASE: "imathasdb"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+    restart: always
 

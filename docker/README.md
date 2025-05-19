@@ -12,7 +12,7 @@
   are planning on doing any development, you should fork the repo on
   Github, then use git to clone the repo on your computer.
 - Install Docker. (see below: Docker Installation)
-- Edit `docker-compose.yml` and edit the path `/c/Users/David/Documents/IMathAS`
+- Edit `docker-compose.yml` and edit the path `/c/IMathAS`
   to point to your copy of IMathAS.
 - In the root of this project, run `docker-compose up`.
 - In a web browser, go to `https://localhost/install.php`. In that, use:
@@ -30,6 +30,7 @@
   (self-signed cert, of course)
 - MySQL will be accessible via `127.0.0.1`, port `3305`.
 - MySQL data files can be found in `$HOME/docker-data/mysql-imathas`.
+- PHPMyAdmin can be accessed via `http://localhost:8081`
 
 # Getting Vue dev server running
 
